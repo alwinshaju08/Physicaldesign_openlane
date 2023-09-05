@@ -17,7 +17,12 @@ With the introduction of open-source technology for chip creation, many RTL desi
 
 <details>
  <summary> Overall Design Flow</summary>
-
+An RTL design is created for a design specification using HDLs like Verilog or VHDL, or it can be created using high-level synthesis tools like SystemC, MATLAB HDL Coder, Bluespec, etc. 
+The process of converting the RTL Netlist into a manufactured IC then starts, and is known as the Physical Design Flow.
+Floor planning, which entails placing preplaced cells, power planning, etc., comes first in the physical design process. The placement of logical synthesis comes next. So that the clock's skew is at a minimal or under the necessary threshold, we now perform CTS (Clock Tree Synthesis). Following CTS, all of the assembled components are routed. A process known as "Static Timing Analysis" is used between each and every step in the physical design flow, from logic synthesis through routing, to analyze the design at each stage and confirm that it is actually right.  Magic is an open source application to view the layouts for every stage. You can extract a tiny netlist, run a SPICE simulation, and compare the results with the post-layout Simulation using ngspice.
   
+</details>
+<details>
+  <summary></summary>
 </details>
 
