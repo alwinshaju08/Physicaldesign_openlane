@@ -82,28 +82,7 @@ The routed .def file is used my Magic to generate the GDSII file
 
 ## OpenLane Installation and Environment Setup
 
-Refer to [Efabless GIthub](https://github.com/The-OpenROAD-Project/OpenLane) or [OpenLane build Script by Nikson Jose] for OpenLane installation and environment setup.If the installation is carried out on a Virtual Machine/Linux, the following repository can be used: (https://github.com/nickson-jose/openlane_build_script) 
- Prior to installation, you must do the following steps to run OpenLane under Windows Subsystem for Linux (WSL1): - OpenLANE Enable WSL1 - 
-
-   - [Reference](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-	 - Install VSCode and RemoteWSL Extension 
-	 - Connect to the WSL and open  the folder in WSL 
-	 - Download and Install  [VcXserv](https://sourceforge.net/projects/vcxsrv/) to run GUI Applications
-	 -  Start VcXserv. Check the "Disable access control box" 
-	 -   Set the Display number as 0 (or anynumber)  In WSL terminal use the  command`export DISPLAY=:0`  
-	 -  Install [Docker Desktop](https://www.docker.com/products/docker-desktop) in windows 
-	 -    Enable the below option 		
-	 - ![Docker  Setup](./images/docker1.png)
-	 - Follow [this](https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly) and install docker dependencies inside WSL
-	 -    Every time start docker   in WSL to use the docker in windows exposed on the port 2375 using  this command
-     	   ```echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc```
-		   This must be done everytime before trying to OpenLane 
-		    Use ```docker info``` to check the status 
-		    
-    This installation can also be  done on a remote Linux instance and Putty can be used with X11 fowarding configured to ```localhost:0``` with VcXsrv installed in   the host machine with Display number set to 0.
-
-
-  
-  
+Refer to [Efabless GIthub](https://github.com/The-OpenROAD-Project/OpenLane) or [OpenLane build Script by Nikson Jose] for OpenLane installation and environment setup.If the installation is carried out on a Virtual Machine/Linux, the following repository can be used from reference **(https://github.com/nickson-jose/openlane_build_script)**
+ 
 </details>
 
