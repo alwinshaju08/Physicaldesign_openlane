@@ -5,10 +5,13 @@ This project is done in the course ["Advanced Physical Design using OpenLANE/Sky
 ## Table of Contents
 
 - [Day1-Introduction](#Day1-introduction)
-- [Day2-]
+  
+- [Day2-Good Floorplan vs bad Floorplan](#Day2-Good-Floorplan-vs-bad-Floorplan)
+  
+- [Day3-]
 
 
-## Day1
+# Day1
 
 <details>
   <summary>Introduction</summary>
@@ -82,7 +85,7 @@ The routed .def file is used my Magic to generate the GDSII file
 
 ## OpenLane Installation and Environment Setup
 
-Refer to [Efabless GIthub](https://github.com/The-OpenROAD-Project/OpenLane) or [OpenLane build Script by Nikson Jose] for OpenLane installation and environment setup.If the installation is carried out on a Virtual Machine/Linux, the following repository can be used from reference **(https://github.com/nickson-jose/openlane_build_script)**
+Refer to [Kanish R1 GIthub](https://github.com/KanishR1/Physical-Design-Using-Openlane) or [OpenLane build Script by Nikson Jose] for OpenLane installation and environment setup.If the installation is carried out on a Virtual Machine/Linux, the following repository can be used from reference **(https://github.com/nickson-jose/openlane_build_script)**
 
 ## Working with OpenLane
 
@@ -123,11 +126,18 @@ View the synthesis statistics
 
 ### Key concepts
 
-#### Utilisation Factor 
+#### Flops ratio 
 
 - The flop ratio is defined as the ratio of the number of flops to the total number of cells
 - Here flop ratio is **1596/10104 = 0.1579** (i.e: 15.8%) [From the synthesis statistics]
 
+
+</details>
+
+# Day2
+<details>
+<summary>Chip Floor Planning Consideration</summary>
+  
 #### Utilisation Factor
 
 - The ratio of area occupied by the cells in the netlist to the total area of the core
@@ -136,7 +146,65 @@ View the synthesis statistics
 ### Aspect Ratio
 
 - Aspect ratio is the ratio of height to the width of the die.
-- Aspect Ratio of 1 indicates that the die is a square die  
+- Aspect Ratio of 1 indicates that the die is a square die
 
+## Floorplanning
+
+Floorplanning involves the following stages
+
+### Pre-Placed cells
+
+- Whenever there is a complex logic which is repeated multiple times or a design given by a third-party it can be perceived as abstract black box with input and output ports, clocks etc ., 
+- These modules can be either macros or IP
+    - Macro  - It is a module such as CPU Core which are developed by the entity fabicating the chip
+    - IP - It is an "Intellectual Propertly" which the entity fabricating the chip gets as a package from a third party or even packaged Hard IPs developed by the same entity. Common examples of IPs are SRAM, PLL, Protocol Converters etc.,
+
+- These Macros and IPs are placed in the core at first before placing the standard cells  and power planning
+- These are optimally such that the cells which are more connected to each other are placed nearby and oriented for input and ouputs
+
+### Decoupling Capacitors to the pre placed cells
+- The power lines can have some RLC component causing the voltage to drop at the node where it enters the Blocks or the ground of the cell can be at a higher potential than ideally 0V
+- When this happens, there is a chance such that the logic transitions are not to the upper or lower noise margins but to the forbidden state causing the circuit to misbehave
+- This is prevented by adding a capacitor in parallel with the power and ground node of the block such that the capacitor decouples the block from the power source whenever there is a logic transition
+
+### Power Planning
+
+- When there are several cells or blocks drawing power from the same power rail and sinking power to the same ground pin the following effects are observed
+    - Whenever there is alogic transition from 1 to 0 in a large number of cells then there is a Voltage Droop in the power lines as Voltage Drops from Vdd
+    - Whener there is a logic transition from 0 to 1 in a large number of cells simultaneously causes the ground potential to raise above 0V calles as Ground Bump
+    - These effects pose a risk of driving the logic state out of the specified noise margin.
+    - To avoid this the Vdd and Gnd are placed as a grid of horizontal and vertical tracks and the cell nearer to an intersection can tap power or sink power to the Vdd or Gnd intersection respectively
+
+### Pin Placement
+ - The input, output and Clock pins are placed optimally such that there is less complication in routing or optimised delay
+ - There are different styles of pin placement in openlane like `random pin placement` , `uniformly spaced` etc.,
+
+ ### Floorplanning - Openlane
+
+Command: `run_floorplan`
+
+Let us change the `VMETAL` and `HMETAL` Layers
+
+*Note : In openlane the layer numbers are 1 less than the actual layer*
+
+[Right: Modifed Configuration in design, Left: Default Config in openlane]
+
+
+  
 </details>
 
+
+## Word of Thanks
+I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
+
+## Acknowledgement
+- Kunal Ghosh, VSD Corp. Pvt. Ltd.
+- Chatgpt
+- Kanish R,Colleague,IIIT B
+- Sumanto Kar,Sr. Project Technical Assistant , IIT Bombay
+- Pruthvi Parate,Colleague,IIIT B
+  
+## Reference 
+- https://www.vsdiat.com
+- https://github.com/riscv/riscv-gnu-toolchain
+- https://github.com/KanishR1
