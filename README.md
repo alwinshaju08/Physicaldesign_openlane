@@ -83,6 +83,60 @@ The routed .def file is used my Magic to generate the GDSII file
 ## OpenLane Installation and Environment Setup
 
 Refer to [Efabless GIthub](https://github.com/The-OpenROAD-Project/OpenLane) or [OpenLane build Script by Nikson Jose] for OpenLane installation and environment setup.If the installation is carried out on a Virtual Machine/Linux, the following repository can be used from reference **(https://github.com/nickson-jose/openlane_build_script)**
+
+## Working with OpenLane
+
+### Start Openlane
+
+First go to the openlane directory and open terminal
+
+```
+make mount
+
+```
+ The terminal changes into the docker instance. Open the OpenLane in interactive mode.
  
+ ```
+./flow.tcl -interactive
+
+ ```
+Set the package required by OpenLane
+
+```package require openlane 0.9```
+
+## Synthesis
+
+Run the synthesis
+
+```run_synthesis```
+
+OpenLane invokes the following
+
+- `Yosys` - RTL Synthesis and maps to yosys generic cells
+- `abc` - Technology mapping with the Skywater130 PDK. Here `sky130_fd_sc_hd` Skywater Foundry produced High density standard cells are used.
+- `OpenSTA` - This does the Static Timing Analysis on the netlist generated after synthesis and generated the timing reports 
+
+View the synthesis statistics
+
+![Screenshot from 2023-09-08 19-45-56](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/d82b1b97-6817-4442-a6cd-7c9793a58aeb)
+
+
+### Key concepts
+
+#### Utilisation Factor 
+
+- The flop ratio is defined as the ratio of the number of flops to the total number of cells
+- Here flop ratio is **1596/10104 = 0.1579** (i.e: 15.8%) [From the synthesis statistics]
+
+#### Utilisation Factor
+
+- The ratio of area occupied by the cells in the netlist to the total area of the core
+- Best practice is to set the utilisation factor less than 50% so that there will be space for optimisations, routing, inserting buffers etc.,
+
+### Aspect Ratio
+
+- Aspect ratio is the ratio of height to the width of the die.
+- Aspect Ratio of 1 indicates that the die is a square die  
+
 </details>
 
