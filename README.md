@@ -8,8 +8,12 @@ This project is done in the course ["Advanced Physical Design using OpenLANE/Sky
   
 - [Day2-Good Floorplan vs bad Floorplan](#Day2-Good-Floorplan-vs-bad-Floorplan)
   
-- [Day3-]
+- [Day3-Design Library Cell using ngspice simulations](#DAY3-Design-Library-Cell-using-ngspice-simulations)
 
+- 
+
+
+- [Reference](#reference)
 
 # Day1
 
@@ -333,6 +337,22 @@ Rise transition time = time(slew_high_rise_thr) - time (slew_low_rise_thr)
 Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
 ```
 
+
+</details>
+
+# DAY3 Design Library Cell using ngspice simulations
+
+<details>
+  <summary>CMOS inverter ngspice simulations </summary>
+  ``ngspice``  is opesoure engine where simulations are done.
+
+  ### IO Placer revision
+
+ - PnR is a iterative flow and hence, we can make changes to the environment variables in the fly to observe the changes in our design. 
+ - Let us say If I want to change my pin configuration along the core from equvi distance randomly placed to someother placement, we just set that IO mode variable on command prompt as shown below
+ ```
+ set ::env(FP_IO_MODE) 2
+```
 
 </details>
 
