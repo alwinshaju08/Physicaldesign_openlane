@@ -218,23 +218,56 @@ To view the floorplan, Magic is invoked after moving to the results/floorplan di
 
 
 ```
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
+magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 
 ```
 
 ![Screenshot 2023-09-10 at 1 59 31 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/87c3c1e9-eb75-4365-932f-9865b3ef6ffd)
 
+One can zoom into Magic layout by selecting an area with left and right mouse click followed by pressing "z" key.
 
-### Review Floorplan Layout in Magic
-   Magic Layout Tool is used for visualizing the layout after floorplan. In order to view floorplan in Magic, following three files are required:
-    1. Technology File (`sky130A.tech`)
-    2. Merged LEF file (`merged.lef`)
-    3. DEF File
+Various components can be identified by using the what command in tkcon window after making a selection on the component.
 
+Zooming in also provides a view of decaps present in picorv32a chip.
 
+The standard cell can be found at the bottom left corner.
+
+You can clearly see I/O pins, Decap cells and Tap cells. Tap cells are placed in a zig zag manner or you can say diagonally
   
 </details>
 
+<details>
+  <summary>
+    Library Binding and Placement
+  </summary>
+  
+  ## Netlist Binding and initial place design
+
+First we need to bind the netlist with physical cells. We have shapes for OR, AND and every cell for pratice purpose. But in reality we dont have such shapes, we have give an physical dimensions like rectangles or squares weight and width. This information is given in libs and lefs. Now we place these cells in our design by initilaising it. 
+
+## Optimize Placement
+
+The next step is placement. Once we initial the design, the logic cells in netlist in its physical dimisoins is placed on the floorplan. Placement is perfomed in 2 stages:
+
+Global Placement: Cells will be placed randomly in optimal positions which may not be legal and cells may overlap. Optimization is done through reduction of half parameter wire length.
+Detailed Placement: It alters the position of cells post global placement so as to legalise them.
+Legalisation of cells is important from timing point of view.
+
+Optimization is stage where we estimate the lenght and capictance, based on that we add buffers. Ideally, Optimization is done for better timing.
+
+![Screenshot from 2023-09-10 02-08-14](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/0137e529-9dae-4b60-a4a8-5967f8d4476c)
+
+## Congestion aware Placement 
+
+Post placement, the design can be viewed on magic within results/placement directory:
+
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def
+
+```
+
+
+</details>
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
