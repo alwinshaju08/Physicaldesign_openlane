@@ -179,18 +179,44 @@ Floorplanning involves the following stages
  - The input, output and Clock pins are placed optimally such that there is less complication in routing or optimised delay
  - There are different styles of pin placement in openlane like `random pin placement` , `uniformly spaced` etc.,
 
- ### Floorplanning - Openlane
+## Floorplan run on OpenLANE & review layout in Magic
 
-Command: `run_floorplan`
+**Floorplan envrionment variables or switches:**
+1. ```FP_CORE_UTIL``` - core utilization percentage
+2. ```FP_ASPECT_RATIO``` - the cores aspect ratio
+3. ```FP_CORE_MARGIN``` - The length of the margin surrounding the core area
+4. ```FP_IO_MODE``` - defines pin configurations around the core(1 = randomly equidistant/0 = not equidistant)
+5. ```FP_CORE_VMETAL``` - vertical metal layer where I/O pins are placed
+6. ```FP_CORE_HMETAL``` - horizontal metal layer where I/O pins are placed
+ 
+***Note: Usually, the parameter values for vertical metal layer and horizontal metal layer will be 1 more than that specified in the files***
 
-Let us change the `VMETAL` and `HMETAL` Layers
-
-*Note : In openlane the layer numbers are 1 less than the actual layer*
-
-Successful floorplanning gives a `def` file as output. This file contains the die area and placement of standard cell
-
+**Importance files in increasing priority order:**
+1. ```floorplan.tcl``` - System default settings
+2. ```conifg.tcl```
+3. ```sky130A_sky130_fd_sc_hd_config.tcl```
+ 
+ To run the picorv32a floorplan in openLANE:
+ 
+ ```
+ run_floorplan
+ 
+ ```
 
 ![Screenshot from 2023-09-10 00-56-54](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/23380a23-e4b3-45fa-9cb1-acd12d95e695)
+
+Post the floorplan run, a .def file will have been created within the ```results/floorplan``` directory. We may review floorplan files by checking the ```floorplan.tcl.``` The system defaults will have been overriden by switches set in conifg.tcl and further overriden by switches set in ```sky130A_sky130_fd_sc_hd_config.tcl.```
+
+To view the floorplan, Magic is invoked after moving to the results/floorplan directory:
+
+
+![Screenshot from 2023-09-10 01-21-14](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/4e118dda-0788-40cf-850d-8ee1b696858e)
+
+
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
+
+```
 
 
 ### Review Floorplan Layout in Magic
