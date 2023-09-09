@@ -187,7 +187,14 @@ Let us change the `VMETAL` and `HMETAL` Layers
 
 *Note : In openlane the layer numbers are 1 less than the actual layer*
 
-[Right: Modifed Configuration in design, Left: Default Config in openlane]
+Successful floorplanning gives a `def` file as output. This file contains the die area and placement of standard cells.
+
+
+### Review Floorplan Layout in Magic
+   Magic Layout Tool is used for visualizing the layout after floorplan. In order to view floorplan in Magic, following three files are required:
+    1. Technology File (`sky130A.tech`)
+    2. Merged LEF file (`merged.lef`)
+    3. DEF File
 
 
   
