@@ -218,6 +218,8 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 ```
 
+![Screenshot 2023-09-10 at 1 59 31 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/87c3c1e9-eb75-4365-932f-9865b3ef6ffd)
+
 
 ### Review Floorplan Layout in Magic
    Magic Layout Tool is used for visualizing the layout after floorplan. In order to view floorplan in Magic, following three files are required:
