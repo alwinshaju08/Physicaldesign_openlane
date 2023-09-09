@@ -211,7 +211,6 @@ I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to com
 - Kunal Ghosh, VSD Corp. Pvt. Ltd.
 - Chatgpt
 - Kanish R,Colleague,IIIT B
-- Sumanto Kar,Sr. Project Technical Assistant , IIT Bombay
 - Pruthvi Parate,Colleague,IIIT B
   
 ## Reference 
