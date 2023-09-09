@@ -222,7 +222,7 @@ To view the floorplan, Magic is invoked after moving to the results/floorplan di
 
 
 ```
-magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../tmp/mergedmax.lef def read picorv32a.floorplan.def &
 
 ```
 
@@ -266,7 +266,7 @@ Optimization is stage where we estimate the lenght and capictance, based on that
 Post placement, the design can be viewed on magic within results/placement directory:
 
 ```
-magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../tmp/mergedmax.lef def read picorv32a.placement.def &
 
 ```
 
