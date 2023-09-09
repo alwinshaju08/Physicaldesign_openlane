@@ -179,7 +179,11 @@ Floorplanning involves the following stages
  - The input, output and Clock pins are placed optimally such that there is less complication in routing or optimised delay
  - There are different styles of pin placement in openlane like `random pin placement` , `uniformly spaced` etc.,
 
-## Floorplan run on OpenLANE & review layout in Magic
+  </details>
+
+  <details>
+
+<summary>Floorplan run on OpenLANE & review layout in Magic</summary>
 
 **Floorplan envrionment variables or switches:**
 1. ```FP_CORE_UTIL``` - core utilization percentage
