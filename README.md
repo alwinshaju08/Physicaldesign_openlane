@@ -268,6 +268,72 @@ magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../t
 
 ![Screenshot 2023-09-10 at 2 12 48 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f6f359c5-c4ba-4f62-975c-232210e22634)
 
+**Note: Power distribution network generation is usually a part of the floorplan step. However, in the openLANE flow, floorplan does not generate PDN.  It is created after post CTS. The steps are - floorplan, placement, CTS, Post CTS and then PDN**
+
+## Need for libraries and characterization
+
+As we know, From logic synthesis to routing and STA, each and evry stage has one thing in common i.e., logic gates/ logic cells. In order for the tool understand these gates are and their timing, we need to characterize these cells. 
+
+# CELL DESIGN AND CHARACETRIZATION FLOWS
+
+Library is a place where we get information about every cell. It has differents cells with different size, functionality,threshold voltages. There is a typical cell design flow steps.
+1. Inputs : PDKS(process design kit) : DRC & LVS, SPICE Models, library & user-defined specs.
+2. Design Steps :Circuit design, Layout design (Art of layout Euler's path and stick diagram), Extraction of parasitics, Characterization (timing, noise, power).
+3. Outputs: CDL (circuit description language), LEF, GDSII, extracted SPICE netlist (.cir), timing, noise and power .lib files
+
+## Standard Cell Characterization Flow
+
+A typical standard cell characterization flow that is followed in the industry includes the following steps:
+
+1. Read in the models and tech files
+2. Read extracted spice Netlist
+3. Recognise behavior of the cells
+4. Read the subcircuits
+5. Attach power sources
+6. Apply stimulus to characterization setup
+7. Provide neccesary output capacitance loads
+8. Provide neccesary simulation commands
+
+Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA. This software generates timing, noise, power models.
+These .libs are classified as Timing characterization, power characterization and noise characterization.
+
+![image](https://github.com/sindhuk95/later/assets/135046169/87348350-fa25-4ef8-99f4-1cdddf070f10)
+
+# TIMING CHARACTERIZATION
+
+In standard cell characterisation, One of the classification of libs is timing characterisation.
+
+## Timing threshold definitions 
+Timing defintion |	Value
+-------------- | --------------
+slew_low_rise_thr	| 20% value
+slew_high_rise_thr | 80% value
+slew_low_fall_thr |	20% value
+slew_high_fall_thr |	80% value
+in_rise_thr	| 50% value
+in_fall_thr |	50% value
+out_rise_thr |	50% value
+out_fall_thr | 50% value
+
+## Propagation Delay and Transition Time 
+
+**Propagation Delay** 
+The time difference between when the transitional input reaches 50% of its final value and when the output reaches 50% of its final value. Poor choice of threshold values lead to negative delay values. Even thought you have taken good threshold values, sometimes depending upon how good or bad the slew, the dealy might be still +ve or -ve.
+
+```
+Propagation delay = time(out_thr) - time(in_thr)
+```
+**Transition Time**
+
+The time it takes the signal to move between states is the transition time , where the time is measured between 10% and 90% or 20% to 80% of the signal levels.
+
+```
+Rise transition time = time(slew_high_rise_thr) - time (slew_low_rise_thr)
+
+Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
+```
+
+
 </details>
 
 ## Word of Thanks
