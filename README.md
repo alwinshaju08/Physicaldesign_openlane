@@ -187,7 +187,10 @@ Let us change the `VMETAL` and `HMETAL` Layers
 
 *Note : In openlane the layer numbers are 1 less than the actual layer*
 
-Successful floorplanning gives a `def` file as output. This file contains the die area and placement of standard cells.
+Successful floorplanning gives a `def` file as output. This file contains the die area and placement of standard cell
+
+
+![Screenshot from 2023-09-10 00-56-54](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/23380a23-e4b3-45fa-9cb1-acd12d95e695)
 
 
 ### Review Floorplan Layout in Magic
