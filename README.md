@@ -586,8 +586,60 @@ Now, lets see an example of simple failing set of rules of metal 1 layer.  you c
 
 ![Screenshot from 2023-09-10 22-52-50](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/d5ecd2e6-21be-4794-aea1-48df708bb1d6)
 
-  
+We use following commands to see metal cut as shown.
+```
+cif see VIA2
+
+```
+![Screenshot from 2023-09-10 23-11-08](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/748bb43a-88a8-42ef-861a-a52242efa105)
+
+## Load Sky130 tech rules for drc challenges 
+
+First load the poly file by ``load poly.mag`` on tkcon window.
+
+Finding the error by mouse cursor and find the box area, Poly.9 is violated due to spacing between polyres and poly.
+
+![Screenshot from 2023-09-10 23-15-04](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/6800d982-37a6-4bd7-9764-b5b80dba8d90)
+
+We find that distance between regular polysilicon & poly resistor should be 22um but it is showing 17um and still no errors . We should go to sky130A.tech file and modify as follows to detect this error.
+
+![Screenshot from 2023-09-10 23-24-02](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/0d199111-ded8-4193-a024-544227ab142c)
+
+
+In line
+
+```
+spacing npres *nsd 480 touching_illegal \
+	"poly.resistor spacing to N-tap < %d (poly.9)"
+```
+change to
+
+```
+spacing npres allpolynonres 480 touching_illegal \
+	"poly.resistor spacing to N-tap < %d (poly.9)"
+```
+Also,
+```
+spacing xhrpoly,uhrpoly,xpc alldiff 480 touching_illegal \
+
+	"xhrpoly/uhrpoly resistor spacing to diffusion < %d (poly.9)"
+```
+
+change to 
+
+```
+spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
+
+	"xhrpoly/uhrpoly resistor spacing to diffusion < %d (poly.9)"
+
+```
+![Screenshot from 2023-09-10 23-15-04](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/13aa309a-c2a7-427a-aae9-780a32229150)
+
+
 </details>
+
+
+
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
