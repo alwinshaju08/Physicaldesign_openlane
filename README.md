@@ -222,7 +222,7 @@ To view the floorplan, Magic is invoked after moving to the results/floorplan di
 
 
 ```
-magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../tmp/mergedmax.lef def read picorv32a.floorplan.def &
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
 
 ```
 
@@ -266,11 +266,11 @@ Optimization is stage where we estimate the lenght and capictance, based on that
 Post placement, the design can be viewed on magic within results/placement directory:
 
 ```
-magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../tmp/mergedmax.lef def read picorv32a.placement.def &
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
 
 ```
+![Screenshot from 2023-09-10 12-14-36](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/98701b8a-a575-4553-a661-15e2af78884d)
 
-<!--![Screenshot 2023-09-10 at 2 12 48 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f6f359c5-c4ba-4f62-975c-232210e22634)-->
 
 **Note: Power distribution network generation is usually a part of the floorplan step. However, in the openLANE flow, floorplan does not generate PDN.  It is created after post CTS. The steps are - floorplan, placement, CTS, Post CTS and then PDN**
 
@@ -301,7 +301,7 @@ A typical standard cell characterization flow that is followed in the industry i
 Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA. This software generates timing, noise, power models.
 These .libs are classified as Timing characterization, power characterization and noise characterization.
 
-<!--![image](https://github.com/sindhuk95/later/assets/135046169/87348350-fa25-4ef8-99f4-1cdddf070f10)-->
+![image](https://github.com/sindhuk95/later/assets/135046169/87348350-fa25-4ef8-99f4-1cdddf070f10)
 
 # TIMING CHARACTERIZATION
 
@@ -353,6 +353,48 @@ Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
  ```
  set ::env(FP_IO_MODE) 2
 ```
+## SPICE Deck Creation and Simulation for CMOS inverter
+
+- Before performing a SPICE simulation we need to create SPICE Deck
+SPICE Deck provides information about the following:
+- Component connectivity - Connectivity of the Vdd, Vss,Vin, substrate. Substrate tunes the threshold voltage of the MOS.
+- component values - values of PMOS and NMOS, Output load, Input Gate Voltage, supply voltage.
+- Node Identification and naming - Nodes are required to define the SPICE Netlist
+     For example ```M1 out in vdd vdd pmos w = 0.375u L = 0.25u``` , ```cload out 0 10f```
+- Simulation commands
+- Model file - information of parameters related to transistors
+Simulation of CMOS using different width and lengths. From the waveform, irrespective of switching the shape of it are almost same.
+
+From the waveform we can see the characteristics are maintained  across all sizes of CMOS. So CMOS as a circuit is a robust device hence use in designing of logic gates. Parameters that define the robustness of the CMOS are
+
+## Switching Threshold Vm
+
+- The Switching Threshold of a CMOS inverter is the point where the Vin = Vout on the DC Transfer characreristics. 
+- At this point, both the transistors are in saturation region, means both are turned on and have high chances of current flowing driectly from VDD to Ground called Leakage current.
+ 
+
+Through transient analysis, we calculate the rise and fall delays of the CMOS by SPICE Simulation. As we know delays are calculated at 50% of the final values.
+
+
+## Lab steps to git clone vsdstdcelldesign
+
+- First, clone the required mag files and spicemodels of inverter,pmos and nmos sky130. The command to clone files from github link is:
+```
+git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+```
+once I run this command, it will create ``vsdstdcelldesign`` folder in openlane directory. I have got an error saying `` could not  resolve host: github.com`` 
+somehow I figured it was due incorrect proxy, so I used this command  `` git config --global --unset https:proxy``. It worked and could clone the files from github to my openlane.
+
+Inorder to open the mag file and run magic go to the directory
+
+For layout we run magic command
+
+``` magic -T sky130A.tech sky130_inv.mag & ```
+
+Ampersand at the end makes the next prompt line free, otherwise magic keeps the prompt line busy. Once we run the magic command we get the layout of the inverter in the magic window
+
+![Screenshot from 2023-09-10 12-01-56](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f5ebf20c-53c3-4c3c-b5a1-5b45e8bf685d)
+
 
 </details>
 
