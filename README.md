@@ -459,12 +459,65 @@ This complex process results in the creation of advanced integrated circuits wit
 - From Layout, we see the layers which are required for CMOS inverter. Inverter is, PMOS and NMOS connected together.
 - Gates of both PMOS and NMOS are connected together and fed to input(here ,A), NMOS source connected to ground(here, VGND), PMOS source is connected to VDD(here, VPWR), Drains of PMOS and NMOS are connected together and fed to output(here, Y). 
 The First layer in skywater130 is ``localinterconnect layer(locali)`` , above that metal 1 is purple color and metal 2 is pink color.
-If you want to see connections between two different parts, place the cursor over that area and press S three times. The tkson window gives the connectivity information.
+If you want to see connections between two different parts, place the cursor over that area and press S one times. The tkson window gives the component name.
 
+![Screenshot from 2023-09-10 15-17-48](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/69b54c77-b195-4ab3-b3f4-b68a75b45a28)
 
+### Library exchange format (.lef)
 
+- The layout of a design is defined in a specific file called LEF.
+-  It includes design rules (tech LEF) and abstract information about the cells. 
+    -  ```Tech LEF``` -  Technology LEF file contains information about the Metal layer, Via Definition and DRCs.
+    -  ```Macro LEF``` -  Contains physical information of the cell such as its Size, Pin, their direction.
+ 
+## Designing standard cell and SPICE extraction in MAGIC 
 
+-  First we need to provide bounding box width and height in tkson window. lets say that width of BBOX is 1.38u and height is 2.72u. The command to give these values to magic is
+   ``` property Fixed BBOX (0 0 1.32 2.72)  ```
+- After this, Vdd, GND segments which are in metal 1 layer, their respective contacts and atlast logic gates layout is defined
+Inorder to know the logical functioning of the inverter, we extract the spice and then we do simulation on the spice. To extract it on spice we open TKCON window, the steps are
+- Know the present directory - ``pwd ``
+- create an extration file -  the command is  `` extract all `` and  ``sky130_inv.ext`` files has been created
+          
+- create spice file using .ext file to be used with our ngspice tool  - the commands are  
+      ``` ext2spice cthresh 0 rthresh 0 ``` - extracts parasatic capcitances also since these are actual layers - nothing is created in the folder
+      ``` ext2spice ``` - a file ```sky130_inv.spice``` has been created.
+  
+![Screenshot from 2023-09-10 15-40-43](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/4a7bf59a-fabe-47b2-9a7a-dd006bd9f1bf)
 
+</details>
+
+<details>
+  <summary> SKY130 Tech File Labs </summary>
+## Create Final SPICE Deck
+
+let us see what is inside the spice Deck
+In the spice file subcircuit(subckt), pmos and nmos node connections are defined
+   
+For NMOS  ``` XO Y A VGND VGND sky130_fd_pr_nfet_01v8 ``` . The order is  ``` Cell_name Drain Gate Source Substrate model_name ``` .
+For PMOS  ``` X1 Y A VPWR VPWR sky130_fd_pr_pfet_01v8 ``` . The order is   ``` cell_name Drain Gate Source Substrate model_name ```.
+   
+For transient anaylsis, we would like to define these following connections and extra nodes for these in spice file
+  - VGND to VSS
+  - Supply voltage from VPWR to Ground - extra nodes here will be 0 and VDD with a value of 3.3v 
+  - sweep in/pulse between A pin and VGND (0)
+Before, editing the file, make sure scaling is proper, we measure the value of the gride size from the magic layout and define using `` .option scale=0.01u`` in the Deck file.
+  
+Now keeping the connection in mind, define the required commands in the file. Along with this we need to include libs for nmos ``nshort.lib`` and pmos ``pshort.lib`` and define transient analysis commands too. We comment the subckt since we are trying to input the controls and transient analysis also. Model names are changed to ``nshort_model.0`` and ``pshort_model.0`` according to the libs of nmos and pmos.
+  
+These voltage sources and simulation commands are defined in the Deck file.
+   ``
+   VDD VPWR 0 3.3V
+   VSS VGND 0 0V
+   Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+   .tran 1n 20n
+   .control
+   run
+   .endc
+   .end
+   ``
+
+  
 </details>
 
 ## Word of Thanks
