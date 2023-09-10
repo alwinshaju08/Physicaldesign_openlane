@@ -489,6 +489,7 @@ Inorder to know the logical functioning of the inverter, we extract the spice an
 
 <details>
   <summary> SKY130 Tech File Labs </summary>
+  
 ## Create Final SPICE Deck
 
 let us see what is inside the spice Deck
@@ -506,6 +507,7 @@ Before, editing the file, make sure scaling is proper, we measure the value of t
 Now keeping the connection in mind, define the required commands in the file. Along with this we need to include libs for nmos ``nshort.lib`` and pmos ``pshort.lib`` and define transient analysis commands too. We comment the subckt since we are trying to input the controls and transient analysis also. Model names are changed to ``nshort_model.0`` and ``pshort_model.0`` according to the libs of nmos and pmos.
   
 These voltage sources and simulation commands are defined in the Deck file.
+
    ``
    VDD VPWR 0 3.3V
    VSS VGND 0 0V
@@ -516,6 +518,9 @@ These voltage sources and simulation commands are defined in the Deck file.
    .endc
    .end
    ``
+   
+![Screenshot from 2023-09-10 22-07-35](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/5d7b3380-f67b-4a2a-b771-147e423fd0e0)
+
 
   
 </details>
