@@ -659,12 +659,25 @@ To implement our own stdcell, few guidelines must be followed
  - I/O ports must lie on the intersection on Horizontal and vertical tracks
  - Width and Height of standard cell are odd mutliples of Horizontal track pitch and Vertical track pitch
 
-This information is defined in ``tracks.info``. The syntax is ``` metal_layer direction offset spacing ```
+This information is defined in ``tracks.info``. 
 
 ```
 li1 X 0.23 0.46 
 li1 Y 0.17 0.34
 ```
+
+before grid on:
+
+![Screenshot from 2023-09-10 23-51-13](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/660cc8a6-ea06-4d2f-af65-d03e73789b86)
+
+To ensure that ports lie on the intersection point, the grid spacing in Magic (tkcon) must be changed to the li1 X and li1 Y values. After providing the command, we have following:
+
+```
+grid 0.46um 0.34um 0.23um 0.17um
+
+```
+
+![Screenshot from 2023-09-10 23-53-51](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/0eb85c92-d30b-4bb6-a810-df34e3841e68)
 
 
 </details>
