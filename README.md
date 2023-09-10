@@ -10,7 +10,9 @@ This project is done in the course ["Advanced Physical Design using OpenLANE/Sky
   
 - [Day3-Design Library Cell using ngspice simulations](#DAY3-Design-Library-Cell-using-ngspice-simulations)
 
-- 
+- [DAY4-Pre-layout Timing analysis and CTS](#DAY-4-Pre-layout-Timing-analysis-and-CTS)
+
+- [DAY5-](#DAY5)
 
 
 - [Reference](#reference)
@@ -638,7 +640,34 @@ spacing xhrpoly,uhrpoly,xpc allpolynonres 480 touching_illegal \
 
 </details>
 
+# DAY 4 
 
+<details>
+
+<summary> Timing Analysis and Clock Tree Synthesis (CTS) </summary>
+
+## Standard Cell LEF generation
+
+During Placement, entire mag information is not necessary. Only the PR boundary, I/O ports, Power and ground rails of the cell is required. This information is defined in LEF file.
+The main objective is to extract lef from the mag file and plug into our design flow.
+
+# Grid into Track info
+
+ **Track** :A path or a line on which metal layers are drawn for routing. Track is used to define the height of the standard cell. 
+
+To implement our own stdcell, few guidelines must be followed 
+ - I/O ports must lie on the intersection on Horizontal and vertical tracks
+ - Width and Height of standard cell are odd mutliples of Horizontal track pitch and Vertical track pitch
+
+This information is defined in ``tracks.info``. The syntax is ``` metal_layer direction offset spacing ```
+
+```
+li1 X 0.23 0.46 
+li1 Y 0.17 0.34
+```
+
+
+</details>
 
 
 ## Word of Thanks
