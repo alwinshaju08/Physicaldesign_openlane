@@ -678,8 +678,9 @@ I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to com
 - Chatgpt
 - Kanish R,Colleague,IIIT B
 - Pruthvi Parate,Colleague,IIIT B
+- Bhargav DV,Colleague,IIIT B
   
 ## Reference 
 - https://www.vsdiat.com
-- https://github.com/riscv/riscv-gnu-toolchain
 - https://github.com/KanishR1
+- https://github.com/bhargav-vlsi/Physical_design_open_lane
