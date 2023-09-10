@@ -687,6 +687,40 @@ The way to define a port is through Magic console and following are the steps:
 - In Magic Layout window, first source the .mag file for the design (here inverter). Then Edit >> Text which opens up a dialogue box.
 - When you double press S at the I/O lables, the text automatically takes the string name and size. Ensure the Port enable checkbox is checked and default checkbox is unchecked as shown in the figure:
 
+![Screenshot from 2023-09-11 00-40-05](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/cdaa8ce9-b9d9-4448-bff9-a3f0830492d0)
+
+- In the above figure, The number in the textarea near enable checkbox defines the order in which the ports will be written in LEF file (0 being the first).
+
+-  For power and ground layers, the definition could be same or different than the signal layer. Here, ground and power connectivity are taken from metal1
+
+## Set port class and port use attributes for layout 
+
+After defining ports, the next step is setting port class and port use attributes.
+
+Select port A in magic:
+```
+port class input
+port use signal
+```
+Select Y area
+```
+port class output
+port use signal
+```
+Select VPWR area
+```
+port class inout
+port use power
+```
+Select VGND area
+```
+port class inout
+port use ground
+
+```
+## Custom cell naming and lef extraction.
+
+Name the custom cell through tkcon window as ```sky130_vsdinv.mag```.
 
 
 
