@@ -576,23 +576,15 @@ The archive file drc_tests.tgz is downloaded into our user directory
   
 ![wget](https://github.com/sindhuk95/SKY130_PD_WS_DAY3/assets/135046169/3358159c-b338-43f4-b811-58a11284e75b)
 
-Now, we need to unzip the archive file. For this we use tar utility command. 
-
-`` tar - tap archiver`` create and extract a tar archive file.
-
-The command to extract the tar file is 
-
-`` tar -xfz drc_tests.tgz``
-
 once extraction is done, drc_tests file is created and you will have all the information about magic layout for this lab exercise
-
-
 
 Now run MAGIC
 
 For better graphics use command ``magic -d XR ``
 
-Now, lets see an example of simple failing set of rules of metal 3 layer.  you can either run this by magic command line `` magic -d XR metal3.mag `` or from the magic console window, `` menu - file - open -load file9here, metal3.mag) ``
+Now, lets see an example of simple failing set of rules of metal 1 layer.  you can either run this by magic command line `` magic -d XR met1.mag `` or from the magic console window, `` menu - file - open -load file9here, met1.mag) ``
+
+![Screenshot from 2023-09-10 22-52-50](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/d5ecd2e6-21be-4794-aea1-48df708bb1d6)
 
   
 </details>
