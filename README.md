@@ -679,6 +679,16 @@ grid 0.46um 0.34um 0.23um 0.17um
 
 ![Screenshot from 2023-09-10 23-53-51](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/0eb85c92-d30b-4bb6-a810-df34e3841e68)
 
+## Create Port Definition: 
+
+However, certain properties and definitions need to be set to the pins of the cell. For LEF files, a cell that contains ports is written as a macro cell, and the ports are the declared as PINs of the macro.
+
+The way to define a port is through Magic console and following are the steps:
+- In Magic Layout window, first source the .mag file for the design (here inverter). Then Edit >> Text which opens up a dialogue box.
+- When you double press S at the I/O lables, the text automatically takes the string name and size. Ensure the Port enable checkbox is checked and default checkbox is unchecked as shown in the figure:
+
+
+
 
 </details>
 
