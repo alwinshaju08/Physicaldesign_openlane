@@ -732,6 +732,9 @@ This generates sky130_vsdinv.lef file.
 
 ![Screenshot from 2023-09-11 00-57-32](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/de9bb2ea-d64f-4573-878b-7fb3a04237b3)
 
+## Steps to include custom cell in ASIC design
+
+We have created a custom standard cell in previous steps of an inverter. Copy lef file, sky130_fd_sc_hd_typical.lib, sky130_fd_sc_hd_slow.lib & sky130_fd_sc_hd_fast.lib to src folder of picorv32a from libs folder vsdstdcelldesign. Then modify the condif.tcl as follows.
 
 
 </details>
