@@ -32,7 +32,7 @@ Floor planning, which entails placing preplaced cells, power planning, etc., com
 
 Physical Design begins with Floor planning - placing the preplaced cells, power planning etc., secondly Placement 
 
-![Simplified Design Flow](https://github.com/shariethernet/Physical-Design-with-OpenLANE-using-SKY130-PDK/blob/main/images/1.PNG)
+![Screenshot from 2023-09-11 00-17-49](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/c9c7af61-db04-4c93-ad3b-52b07ee6f16a)
   
 </details>
 <details>
