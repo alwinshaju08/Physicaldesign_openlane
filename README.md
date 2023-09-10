@@ -509,6 +509,8 @@ Now keeping the connection in mind, define the required commands in the file. Al
 These voltage sources and simulation commands are defined in the Deck file.
 
    ``
+.include ./libs/pshort.lib
+.include ./libs/nshort.lib
    VDD VPWR 0 3.3V
    VSS VGND 0 0V
    Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
