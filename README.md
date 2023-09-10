@@ -382,8 +382,7 @@ Through transient analysis, we calculate the rise and fall delays of the CMOS by
 ```
 git clone https://github.com/nickson-jose/vsdstdcelldesign.git
 ```
-once I run this command, it will create ``vsdstdcelldesign`` folder in openlane directory. I have got an error saying `` could not  resolve host: github.com`` 
-somehow I figured it was due incorrect proxy, so I used this command  `` git config --global --unset https:proxy``. It worked and could clone the files from github to my openlane.
+once I run this command, it will create ``vsdstdcelldesign`` folder in openlane directory.
 
 Inorder to open the mag file and run magic go to the directory
 
@@ -396,6 +395,13 @@ Ampersand at the end makes the next prompt line free, otherwise magic keeps the 
 ![Screenshot from 2023-09-10 12-01-56](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f5ebf20c-53c3-4c3c-b5a1-5b45e8bf685d)
 
 
+</details>
+
+<details>
+  <summary>Inception of Layout and CMOS Fabrication Process
+</summary>
+  
+## Mask CMOS Fabrication
 </details>
 
 ## Word of Thanks
