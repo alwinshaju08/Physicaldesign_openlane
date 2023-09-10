@@ -521,6 +521,76 @@ These voltage sources and simulation commands are defined in the Deck file.
    
 ![Screenshot from 2023-09-10 22-07-35](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/5d7b3380-f67b-4a2a-b771-147e423fd0e0)
 
+## Using ngspice for spice simulation
+  
+Spice Deck is done and now to run spice simulation invoke ngspice in the tool and pass the source file. 
+ 
+  ``` ngspice sky130_inv.spice ```
+  
+On the prompt you can see the values the ngspice has taken. To see the plot, use
+   
+   ``` plot y vs time a ``` 
+   
+![Screenshot from 2023-09-10 22-18-54](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/55cbe4f1-0e53-4dc8-9ec4-c5cb6b168c45)
+
+
+## Standard cell characterization of CMOS Iinverter 
+ 
+characterization of the inverter standard cell depends on Four timing parameters
+ 
+ **Rise Transition**: Time taken for the output to rise from 20% to 80% of max value
+ **Fall Transition**: Time taken for the output to fall from 80% to 20% of max value
+ **Cell Rise delay**: difference in time(50% output rise) to time(50% input fall)
+ **Cell Fall delay**: difference in time(50% output fall) to time(50% input rise)
+ 
+ The above timing parameters can be computed by noting down various values from the ngspice waveform.
+ 
+ ``` Rise Transition : 2.25421 - 2.18636 = 0.006785 ns / 67.85ps ```
+ ``` Fall Transitio : 4.09605 - 4.05554 = 0.04051ns/40.51ps ```
+ ```Cell Rise Delay : 2.21701 - 2.14989 = 0.06689ns/66.89ps ```
+ ```Cell Fall Delay : 4.07816 - 4.05011 = 0.02805ns/28.05ps ```
+
+ ## LAB exercise and DRC Challenges
+
+## Intrdocution of Magic and Skywater DRC's
+
+  - In-depth overview of Magic's DRC engine
+  - Introduction to Google/Skywater DRC rules
+  - Lab : Warm-up exercise : Fixing a simple rule error
+  - Lab : Main exercie : Fixing or create a complex error
+
+ # Sky130s pdk intro and Steps to download labs
+  
+  - setup to view the layouts
+  - For extracting and generating views, Google/skywater repo files were built with Magic
+  - Technology file dependency is more for any layout. hence, this file is created first.
+  - Since, Pdk is still under development, there are some unfinished tech files and these are packaged for magic along with lab exercise layout and bunch of stuff into the tar ball
+ 
+We can download the packaged files from web using ``wget `` command. wget stands for web get, a non-interactive file downloader command.
+  
+  ``` wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz```
+  
+The archive file drc_tests.tgz is downloaded into our user directory 
+  
+![wget](https://github.com/sindhuk95/SKY130_PD_WS_DAY3/assets/135046169/3358159c-b338-43f4-b811-58a11284e75b)
+
+Now, we need to unzip the archive file. For this we use tar utility command. 
+
+`` tar - tap archiver`` create and extract a tar archive file.
+
+The command to extract the tar file is 
+
+`` tar -xfz drc_tests.tgz``
+
+once extraction is done, drc_tests file is created and you will have all the information about magic layout for this lab exercise
+
+
+
+Now run MAGIC
+
+For better graphics use command ``magic -d XR ``
+
+Now, lets see an example of simple failing set of rules of metal 3 layer.  you can either run this by magic command line `` magic -d XR metal3.mag `` or from the magic console window, `` menu - file - open -load file9here, metal3.mag) ``
 
   
 </details>
