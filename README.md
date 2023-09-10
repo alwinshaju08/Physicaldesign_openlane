@@ -365,6 +365,8 @@ SPICE Deck provides information about the following:
 - Model file - information of parameters related to transistors
 Simulation of CMOS using different width and lengths. From the waveform, irrespective of switching the shape of it are almost same.
 
+![242781674-5b494ae5-341a-41ff-a2bb-1db066fa2b72](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/ee5317df-1ef5-4140-88cc-562fecc2001c)
+
 From the waveform we can see the characteristics are maintained  across all sizes of CMOS. So CMOS as a circuit is a robust device hence use in designing of logic gates. Parameters that define the robustness of the CMOS are
 
 ## Switching Threshold Vm
@@ -372,6 +374,8 @@ From the waveform we can see the characteristics are maintained  across all size
 - The Switching Threshold of a CMOS inverter is the point where the Vin = Vout on the DC Transfer characreristics. 
 - At this point, both the transistors are in saturation region, means both are turned on and have high chances of current flowing driectly from VDD to Ground called Leakage current.
  
+![243084644-3393442e-1b4b-434a-bc7e-6e2ed4fde218](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/1dbabda5-c5bd-4676-a306-c0de5519c659)
+
 
 Through transient analysis, we calculate the rise and fall delays of the CMOS by SPICE Simulation. As we know delays are calculated at 50% of the final values.
 
