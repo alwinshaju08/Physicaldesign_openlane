@@ -270,7 +270,7 @@ magic -T /home/parallels/.volare/sky130A/libs.tech/sky130A.tech lef read ../../t
 
 ```
 
-![Screenshot 2023-09-10 at 2 12 48 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f6f359c5-c4ba-4f62-975c-232210e22634)
+<!--![Screenshot 2023-09-10 at 2 12 48 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f6f359c5-c4ba-4f62-975c-232210e22634)-->
 
 **Note: Power distribution network generation is usually a part of the floorplan step. However, in the openLANE flow, floorplan does not generate PDN.  It is created after post CTS. The steps are - floorplan, placement, CTS, Post CTS and then PDN**
 
@@ -301,7 +301,7 @@ A typical standard cell characterization flow that is followed in the industry i
 Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA. This software generates timing, noise, power models.
 These .libs are classified as Timing characterization, power characterization and noise characterization.
 
-![image](https://github.com/sindhuk95/later/assets/135046169/87348350-fa25-4ef8-99f4-1cdddf070f10)
+<!--![image](https://github.com/sindhuk95/later/assets/135046169/87348350-fa25-4ef8-99f4-1cdddf070f10)-->
 
 # TIMING CHARACTERIZATION
 
