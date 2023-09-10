@@ -722,6 +722,16 @@ port use ground
 
 Name the custom cell through tkcon window as ```sky130_vsdinv.mag```.
 
+We generate lef file by command:
+
+```
+lef write
+
+```
+This generates sky130_vsdinv.lef file.
+
+![Screenshot from 2023-09-11 00-57-32](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/de9bb2ea-d64f-4573-878b-7fb3a04237b3)
+
 
 
 </details>
