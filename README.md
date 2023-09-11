@@ -9,11 +9,11 @@ This project is done in the course ["Advanced Physical Design using OpenLANE/Sky
   
 - [Day2-Good Floorplan vs bad Floorplan](#Day2-Good-Floorplan-vs-bad-Floorplan)
   
-- [Day3-Design Library Cell using ngspice simulations](#DAY3-Design-Library-Cell-using-ngspice-simulations)
+- [Day3-Design Library Cell using ngspice simulations](#Day3-Design-Library-Cell-using-ngspice-simulations)
 
-- [DAY4-Pre-layout Timing analysis and CTS](#DAY-4-Pre-layout-Timing-analysis-and-CTS)
+- [Day4-Pre-layout Timing analysis and CTS](#Day-4-Pre-layout-Timing-analysis-and-CTS)
 
-- [DAY5-Final steps in RTL2GDS](#DAY5-Final-steps-in-RTL2GDS)
+- [Day5-Final steps in RTL2GDS](#Day5-Final-steps-in-RTL2GDS)
 
 
 - [Reference](#reference)
