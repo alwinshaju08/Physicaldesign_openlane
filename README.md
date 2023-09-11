@@ -13,7 +13,7 @@ This project is done in the course ["Advanced Physical Design using OpenLANE/Sky
 
 - [DAY4-Pre-layout Timing analysis and CTS](#DAY-4-Pre-layout-Timing-analysis-and-CTS)
 
-- [DAY5-](#DAY5)
+- [DAY5-Final steps in RTL2GDS](#DAY5-Final-steps-in-RTL2GDS)
 
 
 - [Reference](#reference)
@@ -932,13 +932,15 @@ setup slack:
 ![Screenshot from 2023-09-11 14-59-04](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/59a9cdcd-3176-4cef-852d-8359d3f4b3d2)
 
 
-
 </details>
 
 # Day 5
 
 <details>
 	<summary>Final steps in RTL2GDS</summary>
+
+## Maze Routing and Lee's algorithm
+
 </details>
 
 ## Word of Thanks
