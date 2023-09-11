@@ -855,8 +855,39 @@ From the timing report, we can improve slack by upsizing the cells i.e., by repl
 <details>
 <summary>Clock Tree Synthesis using Tritoncts</summary>
 
+Clock tree synthesis (CTS) can be implemented in various ways, and the choice of the specific technique depends on the design requirements, constraints, and goals. Here are some different types or approaches to clock tree synthesis:
+
+Balanced Tree CTS:
+In a balanced tree CTS, the clock signal is distributed in a balanced manner, often resembling a binary tree structure.
+This approach aims to provide roughly equal path lengths to all clock sinks (flip-flops) to minimize clock skew.
+It's relatively straightforward to implement and analyze but may not be the most power-efficient solution.
+
+H-tree CTS:
+An H-tree CTS uses a hierarchical tree structure, resembling the letter "H."
+It is particularly effective for distributing clock signals across large chip areas.
+The hierarchical structure can help reduce clock skew and optimize power consumption.
+
+Star CTS:
+In a star CTS, the clock signal is distributed from a single central point (like a star) to all the flip-flops.
+This approach simplifies clock distribution and minimizes clock skew but may require a higher number of buffers near the source.
+
+Global-Local CTS:
+Global-Local CTS is a hybrid approach that combines elements of both star and tree topologies.
+The global clock tree distributes the clock signal to major clock domains, while local trees within each domain further distribute the clock.
+This approach balances between global and local optimization, addressing both chip-wide and domain-specific clocking requirements.
+
+Mesh CTS:
+In a mesh CTS, clock wires are arranged in a mesh-like grid pattern, and each flip-flop is connected to the nearest available clock wire.
+It is often used in highly regular and structured designs, such as memory arrays.
+Mesh CTS can offer a balance between simplicity and skew minimization.
+
+Adaptive CTS:
+Adaptive CTS techniques adjust the clock tree structure dynamically based on the timing and congestion constraints of the design.
+This approach allows for greater flexibility and adaptability in meeting design goals but may be more complex to implement.
+
 In this stage clock is propagated and make sure that clock reaches each and every clock pin from clock source with mininimum skew and insertion delay. Inorder to do this, we implement H-tree using mid point strategy. For balancing the skews, we use clock invteres or bufferes in the clock path. 
 Before attempting to run CTS in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement techniques. Therefore, the verilog file needs to be modified using the ```write_verilog``` command. Then, the synthesis, floorplan and placement is run again. To run CTS use the below command:
+
 ```
 run_cts
 ```
