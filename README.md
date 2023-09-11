@@ -902,6 +902,35 @@ Before attempting to run CTS in TritonCTS tool, if the slack was attempted to be
 ```
 run_cts
 ```
+After CTS run, my slack values are
+``` setup:12.97,Hold:0.23 ```
+
+here my both values are not voilating 
+
+Since, clock is propagated, from this stage, we do timing analysis with real clocks. From now post cts analysis is performed by operoad within the openlane flow 
+
+```
+openroad
+read_lef <path of merge.nom.lef>
+read_def <path of def>
+write_db pico_cts.db
+read_db pico_cts.db
+read_verilog /home/parallels/OpenLane/designs/picorv32a/runs/RUN_09-09_11-20/results/synthesis/picorv32a.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+read_sdc /home/parallels/OpenLane/designs/picorv32a/src/my_base.sdc
+set_propagated_clock (all_clocks)
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
+``` 
+
+Hold slack:
+
+![Screenshot from 2023-09-11 14-59-57](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/7a0875ab-5d58-491c-a026-846e327d5abf)
+
+
+setup slack:
+
+![Screenshot from 2023-09-11 14-59-04](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/59a9cdcd-3176-4cef-852d-8359d3f4b3d2)
+
 
 
 </details>
