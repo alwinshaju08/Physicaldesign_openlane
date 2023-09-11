@@ -1,3 +1,4 @@
+
 # Physicaldesign_openlane
 
 This project is done in the course ["Advanced Physical Design using OpenLANE/Sky130"]
@@ -789,6 +790,12 @@ Lets say two scenarios,
 we have long wire and the cell(X1) is sitting at the end of the wire : the delay of this cell will be different because of the bad transition that caused due to the resistance and capcitances on the long wire.
 we have the same cell sitting at the end of the short wire: the delay of this will be different since the tarn is not that bad comapred to the earlier scenario.
 Eventhough both are same cells, depending upon the input tran, the delay got chaned. Same goes with o/p load also.
+
+VLSI engineers have identified specific constraints when inserting buffers to preserve signal integrity. They've noticed that each buffer level must maintain consistent sizing, but their delays can vary depending on the load they drive. To address this, they introduced the concept of "delay tables," which essentially consist of 2D arrays containing values for input slew and load capacitance, each associated with different buffer sizes. These tables serve as timing models for the design.
+
+When the algorithm works with these delay tables, it utilizes the provided input slew and load capacitance values to compute the corresponding delay values for the buffers. In cases where the precise delay data is not readily available, the algorithm employs a technique of interpolation to determine the closest available data points and extrapolates from them to estimate the required delay values.
+
+![Screenshot 2023-09-11 at 9 56 27 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/7f23c990-215b-4fd3-a581-448967c046ae)
 
 
 
