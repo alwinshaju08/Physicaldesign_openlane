@@ -797,6 +797,22 @@ When the algorithm works with these delay tables, it utilizes the provided input
 
 ![Screenshot 2023-09-11 at 9 56 27 AM](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/7f23c990-215b-4fd3-a581-448967c046ae)
 
+## Openlane steps with custom standard cell
+
+We perform synthesis and found that it has positive slack and met timing constraints.
+
+During Floorplan,``` 504 endcaps, 6731 tapcells ``` got placed. Design has 275 original rows
+
+Now ``` run_placement```
+
+After placement, we check for legality &To check the layout invoke magic from the results/placement directory:
+
+```
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/floorplan/picorv32a.def &
+
+```
+
+![Screenshot from 2023-09-11 10-44-31](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/4344be1e-881b-492e-910f-e3a27b052eda)
 
 
 </details>
