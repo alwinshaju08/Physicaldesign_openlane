@@ -942,7 +942,7 @@ After changing the files, load the placement stage def file and run cts again.
 Now, again run OpenROAD and create another db and everything else is same.
 Report after post_cts is
 
-``` Setup slack - 2.2379 , Hold slack - 0.1169 ```
+``` Setup slack - 2.2379 , Hold slack - 0.1869 ```
 
 
 </details>
