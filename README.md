@@ -931,6 +931,19 @@ setup slack:
 
 ![Screenshot from 2023-09-11 14-59-04](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/59a9cdcd-3176-4cef-852d-8359d3f4b3d2)
 
+# test:
+type this in openlane
+```
+echo $::env(CTS_CLK_BUFFER_LIST)
+set $::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+echo $::env(CTS_CLK_BUFFER_LIST)
+```
+After changing the files, load the placement stage def file and run cts again. 
+Now, again run OpenROAD and create another db and everything else is same.
+Report after post_cts is
+
+``` Setup slack - 2.2379 , Hold slack - 0.1169 ```
+
 
 </details>
 
