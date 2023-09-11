@@ -817,6 +817,28 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 </details>
 
+<details>
+	<summary> Post-synthesis timing analysis Using OpenSTA </summary>
+
+Timing analysis is carried out outside the openLANE flow using OpenSTA tool. For this, ```pre_sta.conf``` is required to carry out the STA analysis. Invoke OpenSTA outside the openLANE flow as follows:
+ 
+```
+sta pre_sta.conf
+```
+
+sdc file for OpenSTA is modified like this:
+
+base.sdc is located in vsdstdcelldesigns/extras directory.
+So, I copied it into our design folder using
+
+``` cp my_base.sdc /home/parallels/OpenLane/designs/picorv32a/src/ ```
+
+![Screenshot from 2023-09-11 11-18-45](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/cb4c3123-62ee-408f-91c6-5de0c7dd7d5b)
+
+
+
+</details>
+
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
