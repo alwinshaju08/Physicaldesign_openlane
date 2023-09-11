@@ -835,6 +835,30 @@ So, I copied it into our design folder using
 
 ![Screenshot from 2023-09-11 11-18-45](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/cb4c3123-62ee-408f-91c6-5de0c7dd7d5b)
 
+Since I have no Violations I skipped this, but have hands on experience on timing analysis using OpenSTA.
+
+Since clock is propagated only once we do CTS, In placement stage, clock is considered to be ideal. So only setup slack is taken into consideration before CTS.
+
+``` 
+Setup time: minimum time required for the data to be stable before the active edge of the clock to get properly captured.
+
+Setup slack : data required time - data arrival time 
+
+```
+clock is generated from PLL which has inbuilt circuit which cells and some logic. There might variations in the clock generation depending upon the ckt. These variations are collectivity known as clock uncertainity. In that jitter is one of the parameter. It is uncertain that clock might come at that exact time withought any deviation. That is why it is called clock_uncertainity
+Skew, Jitter and Margin comes into clock_uncertainity
+
+```  Clock Jitter : deviation of clock edge from its original position. ```
+
+From the timing report, we can improve slack by upsizing the cells i.e., by replacing the cells with high drive strength and we can see significant changes in the slack.
+
+#  Clock Tree Synthesis using Tritoncts
+
+In this stage clock is propagated and make sure that clock reaches each and every clock pin from clock source with mininimum skew and insertion delay. Inorder to do this, we implement H-tree using mid point strategy. For balancing the skews, we use clock invteres or bufferes in the clock path. 
+Before attempting to run CTS in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement techniques. Therefore, the verilog file needs to be modified using the ```write_verilog``` command. Then, the synthesis, floorplan and placement is run again. To run CTS use the below command:
+```
+run_cts
+```
 
 
 </details>
