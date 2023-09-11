@@ -851,8 +851,9 @@ Skew, Jitter and Margin comes into clock_uncertainity
 ```  Clock Jitter : deviation of clock edge from its original position. ```
 
 From the timing report, we can improve slack by upsizing the cells i.e., by replacing the cells with high drive strength and we can see significant changes in the slack.
-
-#  Clock Tree Synthesis using Tritoncts
+</details>
+<details>
+<summary>Clock Tree Synthesis using Tritoncts</summary>
 
 In this stage clock is propagated and make sure that clock reaches each and every clock pin from clock source with mininimum skew and insertion delay. Inorder to do this, we implement H-tree using mid point strategy. For balancing the skews, we use clock invteres or bufferes in the clock path. 
 Before attempting to run CTS in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement techniques. Therefore, the verilog file needs to be modified using the ```write_verilog``` command. Then, the synthesis, floorplan and placement is run again. To run CTS use the below command:
