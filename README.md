@@ -780,6 +780,17 @@ sta report:
 ![Screenshot from 2023-09-11 09-14-38](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/e63e74da-2c40-47e7-90d0-0c17f61758e7)
 
 
+## Delay Tables
+
+Basically, Delay is a parameter that has huge impact on our cells in the design. Delay decides each and every other factor in timing. 
+For a cell with different size, threshold voltages, delay model table is created where we can it as timing table.
+```Delay of a cell depends on input transition and out load```. 
+Lets say two scenarios, 
+we have long wire and the cell(X1) is sitting at the end of the wire : the delay of this cell will be different because of the bad transition that caused due to the resistance and capcitances on the long wire.
+we have the same cell sitting at the end of the short wire: the delay of this will be different since the tarn is not that bad comapred to the earlier scenario.
+Eventhough both are same cells, depending upon the input tran, the delay got chaned. Same goes with o/p load also.
+
+
 
 </details>
 
