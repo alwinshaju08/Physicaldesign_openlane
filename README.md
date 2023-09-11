@@ -734,7 +734,51 @@ This generates sky130_vsdinv.lef file.
 
 ## Steps to include custom cell in ASIC design
 
-We have created a custom standard cell in previous steps of an inverter. Copy lef file, sky130_fd_sc_hd_typical.lib, sky130_fd_sc_hd_slow.lib & sky130_fd_sc_hd_fast.lib to src folder of picorv32a from libs folder vsdstdcelldesign. Then modify the condif.tcl as follows.
+We have created a custom standard cell in previous steps of an inverter. Copy lef file, sky130_fd_sc_hd_typical.lib, sky130_fd_sc_hd_slow.lib & sky130_fd_sc_hd_fast.lib to src folder of picorv32a from libs folder vsdstdcelldesign. Then modify the config.tcl as follows.
+
+```
+
+# Design
+set ::env(DESIGN_NAME) "picorv32a"
+
+set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/src/picorv32a.v"
+
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_NET) $::env(CLOCK_PORT)
+
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) {1}
+
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+
+set filename $::env(DESIGN_DIR)/$::env(PDK)_$::env(STD_CELL_LIBRARY)_config.tcl
+if { [file exists $filename] == 1} {
+	source $filename
+}
+
+```
+
+To integrate standard cell in openlane flow after `` make mount `` , perform following commands:
+
+```
+prep -design picorv32a -tag RUN_2023.09.09_20.37.18 -overwrite 
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+run_synthesis
+
+```
+synthesis report :
+
+![Screenshot from 2023-09-11 09-15-46](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/2b9b8757-17cc-41f5-b6a8-52a5285698f5)
+
+sta report:
+
+![Screenshot from 2023-09-11 09-14-38](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/e63e74da-2c40-47e7-90d0-0c17f61758e7)
+
 
 
 </details>
