@@ -1075,6 +1075,48 @@ Here drc violation is zero:
 
 ![Screenshot from 2023-09-16 00-58-21](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/b77dda43-8564-4a47-89c9-853f35c7878e)
 
+## Layout in magic tool post routing: 
+
+The design can be viewed on magic within results/routing directory. Run the follwing command in that directory:
+
+```
+magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tmp/merged.nom.lef def read results/routing/picorv32a.def &
+
+```
+![Screenshot from 2023-09-16 01-17-34](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/cdc9252e-4e65-4319-bcbc-ef1dec3a87f3)
+
+## Area using ```box``` command:
+
+![Screenshot from 2023-09-16 01-35-19](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/77ed20bb-5e5b-4939-a3b1-dd01a1de7450)
+
+## Post-synthesis Gate count:-
+
+![Screenshot from 2023-09-16 01-39-33](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f0d2cbc1-820c-4e95-b0d7-74f1f5db5fb2)
+
+# Openlane Interactive flow:
+
+```
+cd Desktop/work/tools/openlane_working_dir/OpenLane/ 
+
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+run_synthesis
+run_floorplan
+detailed_placement
+run_cts
+run_routing
+
+```
+# OpenLANE non-interactive flow
+
+```
+cd Desktop/OpenLane 
+make mount
+./flow.tcl -design picorv32a
+
+```
+
 </details>
 
 ## Word of Thanks
