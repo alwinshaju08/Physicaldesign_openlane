@@ -991,6 +991,13 @@ prep -design picorv32a -tag Run 12.07.10.11
 gen_pdn
 
 ```
+
+![Screenshot from 2023-09-15 23-02-43](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/1d34d0b9-c764-4e99-8b33-e2a9dd103855)
+
+
+![Screenshot from 2023-09-15 23-02-31](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/d4308ba0-8ba9-4b2c-9e45-25f4f0c07b31)
+
+
 - Once the command is given, power distribution netwrok is generated.
 - The power distribution network has to take the ```design_cts.def``` as the input def file.
 - Power rings,strapes and rails are created by PDN.
@@ -1056,11 +1063,17 @@ Make sure the CURRENT_DEF is set to pdn.def
 
 Start routing by using
 
+```
 run_routing
-
+```
 The options for routing can be set in the config.tcl file.
 The optimisations in routing can also be done by specifying the routing strategy to use different version of TritonRoute Engine. There is a trade0ff between the optimised route and the runtime for routing.
+
 For the default setting picorv32a takes approximately 30 minutes according to the current version of TritonRoute.
+
+Here drc violation is zero:
+
+![Screenshot from 2023-09-16 00-58-21](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/b77dda43-8564-4a47-89c9-853f35c7878e)
 
 </details>
 
