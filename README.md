@@ -984,7 +984,7 @@ via spacing
 
 Unlike the general ASIC flow, Power Distribution Network generation is not a part of floorplan run in OpenLANE. PDN must be generated after CTS and post-CTS STA analyses:
 
-we can check whether PDN has been created or no by check the current def environment variable: ``` echo S::env(CURRENT_DEF)```
+we can check whether PDN has been created or no by check the current def environment variable: ``` echo $::env(CURRENT_DEF)```
 
 ```
 prep -design picorv32a -tag Run 12.07.10.11
@@ -1027,8 +1027,41 @@ The two routing engines responsible for handling these two stages are as follows
    - **Guide Merging**: TritonRoute merges guides that are orthogonal (touching guides) to the preferred guides, streamlining the routing process.
 
    - **Guide Bridging**: When it encounters guides that run parallel to the preferred routing guides, TritonRoute employs an additional layer to bridge them, ensuring efficient routing within the preprocessed guides.
+   - Assumes route guide for each net satisfy inter guide connectivity Same metal layer with touching guides or neighbouring metal layers with nonzero  vertically overlapped area( via are placed ).each unconnected termial i.e., pin of a standard cell instance should have its pin shape overlapped by a routing guide( a black dot(pin) with purple box(metal1 layer))
+   - 
+<img width="1281" alt="Screenshot 2023-09-15 at 11 04 50 PM" src="https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/b047856c-d799-4d96-bcf9-46ad4e9bba4c">
 
 In summary, TritonRoute is a sophisticated tool that not only performs initial detail routing but also places a strong emphasis on optimizing routing within pre-processed route guides by breaking down, merging, and bridging them as needed to achieve efficient and effective routing results.
+
+<img width="1290" alt="Screenshot 2023-09-15 at 11 10 09 PM" src="https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/b8d2a78d-abb2-411d-a609-afc486ca808e">
+
+Works on MILP(Mixed Integer linear programming) based panel routing scheme with Intra-layer parallel and Inter-layer sequential routing framework
+
+# TritonRoute problem statement
+
+```
+Inputs : LEF, DEF, Preprocessed route guides
+Output : Detailed routing solution with optimized wire length and via count
+Constraints : Route guide honoring, connectivity constraints and design rules.
+
+```
+The space where the detailed route takes place has been defined. Now TritonRoute handles the connectivity in two ways.
+
+Access Point(AP) : An on-grid point on the metal of the route guide, and is used to connect to lower-layer segments, pins or IO ports,upper-layer segments.
+Access Point Cluster(APC) : A union of all the Aps derived from same lower-layer segment, a pin or an IO port, upper-layer guide.
+
+**TritonRoute run for routing**
+
+Make sure the CURRENT_DEF is set to pdn.def
+
+Start routing by using
+
+run_routing
+
+The options for routing can be set in the config.tcl file.
+The optimisations in routing can also be done by specifying the routing strategy to use different version of TritonRoute Engine. There is a trade0ff between the optimised route and the runtime for routing.
+For the default setting picorv32a takes approximately 30 minutes according to the current version of TritonRoute.
+
 </details>
 
 ## Word of Thanks
