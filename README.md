@@ -1089,6 +1089,11 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 ![Screenshot from 2023-09-16 01-35-19](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/77ed20bb-5e5b-4939-a3b1-dd01a1de7450)
 
+## slack report post routing:
+
+![Screenshot from 2023-09-16 01-44-53](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/efd5e673-af98-45b8-a833-9bfb81d198b1)
+
+
 ## Post-synthesis Gate count:-
 
 ![Screenshot from 2023-09-16 01-39-33](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/f0d2cbc1-820c-4e95-b0d7-74f1f5db5fb2)
