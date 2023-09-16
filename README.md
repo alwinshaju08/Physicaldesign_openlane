@@ -1085,6 +1085,16 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 ```
 ![Screenshot from 2023-09-16 01-17-34](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/cdc9252e-4e65-4319-bcbc-ef1dec3a87f3)
 
+## Identifing custom made sky130_vsdinv
+
+In tkcon type the follow command to check where sky130_vsdinv exist or not
+```
+getcell sky130_vsdinv
+what
+expand
+```
+![Screenshot from 2023-09-17 00-19-13](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/a14cf4e4-c4f7-401f-8d8e-975943492557)
+
 ## Area using ```box``` command:
 
 ![Screenshot from 2023-09-16 01-35-19](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/77ed20bb-5e5b-4939-a3b1-dd01a1de7450)
