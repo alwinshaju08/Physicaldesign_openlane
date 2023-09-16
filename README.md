@@ -1103,6 +1103,12 @@ expand
 
 ![Screenshot from 2023-09-16 01-44-53](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/efd5e673-af98-45b8-a833-9bfb81d198b1)
 
+## Post-synthesis flip flop to standard cell ratio
+
+flip-flop to standard cell ratio = 1613/18508 = 0.0871
+
+![Screenshot from 2023-09-17 00-40-21](https://github.com/alwinshaju08/Physicaldesign_openlane/assets/69166205/59abe810-16eb-4bad-8067-18adc7c47fc6)
+
 
 ## Post-synthesis Gate count:-
 
