@@ -916,6 +916,7 @@ read_def <path of def>
 write_db pico_cts.db
 read_db pico_cts.db
 read_verilog /home/parallels/OpenLane/designs/picorv32a/runs/RUN_09-09_11-20/results/synthesis/picorv32a.v
+link_design picorv32a
 read_liberty $::env(LIB_SYNTH_COMPLETE)
 read_sdc /home/parallels/OpenLane/designs/picorv32a/src/my_base.sdc
 set_propagated_clock (all_clocks)
