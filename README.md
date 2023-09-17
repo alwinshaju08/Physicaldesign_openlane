@@ -1142,7 +1142,7 @@ make mount
 </details>
 
 ## Word of Thanks
-I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
+I sciencerly thank **Mr. Kunal Ghosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
 
 ## Acknowledgement
 - Kunal Ghosh, VSD Corp. Pvt. Ltd.
