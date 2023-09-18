@@ -1090,7 +1090,7 @@ magic -T /home/parallels/OpenLane/vsdstdcelldesign/libs/sky130A.tech lef read tm
 
 In tkcon type the follow command to check where sky130_vsdinv exist or not
 ```
-getcell sky130_vsdinv
+getcell sky130_vsdinv(not working in some magic version)
 what
 expand
 ```
